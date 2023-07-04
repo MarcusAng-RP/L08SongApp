@@ -2,6 +2,7 @@ package sg.edu.rp.c346.id22002222.songapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -9,10 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import kotlinx.coroutines.scheduling.Task;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> aa;
     ListView lv;
 
+    int stars = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         rb5 = findViewById(R.id.rb5);
         btnInsert = findViewById(R.id.btnInsert);
         btnShowList = findViewById(R.id.btnShowList);
-        lv = findViewById(R.id.lv);
+        lv = findViewById(R.id.lisv);
 
 
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 String title = etTitle.getText().toString();
                 String singer = etSinger.getText().toString();
                 int year = Integer.parseInt(etYear.getText().toString());
-                int stars = 0;
+
 
                 if(rb1.isChecked()) {
 
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 db.insertSong(title,singer, year, stars);
+                Toast.makeText(MainActivity.this, "Song successfully added", Toast.LENGTH_SHORT).show();
 
 
 //
@@ -89,11 +91,16 @@ public class MainActivity extends AppCompatActivity {
         btnShowList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myDB db= new myDB(MainActivity.this);
-                al = db.getSongs();
+                Intent intent = new Intent(MainActivity.this, detailsActivity.class);
+                startActivity(intent);
 
-                aa = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, al);
-                lv.setAdapter(aa);
+//                myDB db = new myDB(MainActivity.this);
+//                al = db.getSongs();
+//
+//                aa = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, al);
+
+
+//                lv.setAdapter(aa);
             }
         });
     }
