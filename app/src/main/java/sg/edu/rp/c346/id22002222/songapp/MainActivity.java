@@ -2,6 +2,7 @@ package sg.edu.rp.c346.id22002222.songapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -41,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         rb3 = findViewById(R.id.rb3);
         rb4 = findViewById(R.id.rb4);
         rb5 = findViewById(R.id.rb5);
-        btnInsert = findViewById(R.id.btnInsert);
-        btnShowList = findViewById(R.id.btnShowList);
+        btnInsert = findViewById(R.id.btnUpdate);
+        btnShowList = findViewById(R.id.btnDelete);
         lv = findViewById(R.id.lisv);
 
 
@@ -59,31 +60,48 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if(rb1.isChecked()) {
-
                     stars = 1;
+                    Intent intent = new Intent(MainActivity.this,EditSongActivity.class);
+                    intent.putExtra("stars", 1);
+                    startActivity(intent);
                 }
                 else if(rb2.isChecked()){
                     stars = 2;
-                }
+                    Intent intent = new Intent(MainActivity.this,EditSongActivity.class);
+                    intent.putExtra("stars", 2);
+                    startActivity(intent);
 
+                }
 
                 else if(rb3.isChecked()){
                     stars = 3;
+                    Intent intent = new Intent(MainActivity.this,EditSongActivity.class);
+                    intent.putExtra("stars", 3);
+                    startActivity(intent);
 
                 }else if(rb4.isChecked()){
                     stars = 4;
+                    Intent intent = new Intent(MainActivity.this,EditSongActivity.class);
+                    intent.putExtra("stars", 4);
+                    startActivity(intent);
 //
                 }
                 else if(rb5.isChecked()){
                     stars = 5;
+                    Intent intent = new Intent(MainActivity.this,EditSongActivity.class);
+                    intent.putExtra("stars", 5);
+                    startActivity(intent);
+
 
                 }
 
                 db.insertSong(title,singer, year, stars);
+
+
                 Toast.makeText(MainActivity.this, "Song successfully added", Toast.LENGTH_SHORT).show();
 
 
-//
+
 
             }
         });
@@ -94,14 +112,25 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, detailsActivity.class);
                 startActivity(intent);
 
+
 //                myDB db = new myDB(MainActivity.this);
 //                al = db.getSongs();
 //
 //                aa = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, al);
-
-
+//
+//
 //                lv.setAdapter(aa);
+
+
             }
         });
+
+
     }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        btnShowList.performClick();
+//    }
 }

@@ -1,6 +1,8 @@
 package sg.edu.rp.c346.id22002222.songapp;
 
-public class Song {
+import java.io.Serializable;
+
+public class Song implements Serializable {
 
     private int id;
     private String title;
@@ -26,8 +28,33 @@ public class Song {
 
     public int getStars() { return stars;}
 
+    public void starRating(int Stars){
+
+        for(int i = 0 ; i < Stars; i++){
+            System.out.println("* ");
+
+        }
+
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setSingers(String singers) {
+        this.singers = singers;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     public String toString() {
-        return id + "\n" + title + "\n" + singers + "\n" + year + "\n" + stars;
+        String message = "";
+        for(int i = 0 ; i < stars; i++){
+            message += "*";
+//            System.out.println("* ");
+
+        }
+        return   title + "\n" + singers  + "-" + year + "\n" + message  ;
     }
 
 }

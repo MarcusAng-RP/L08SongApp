@@ -100,4 +100,29 @@ public class myDB extends SQLiteOpenHelper {
         db.close();
         return songs;
     }
+
+    public int updateSong(Song song){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TITLE, song.getTitle());
+        values.put(COLUMN_SINGERS, song.getSingers());
+        values.put(COLUMN_YEAR, song.getYear());
+        values.put(COLUMN_STARS, song.getStars());
+        String condition = COLUMN_ID + "= ?" ;
+        String[] args = {String.valueOf(song.getId())};
+        int result = db.update(TABLE_SONG, values, condition, args);
+        db.close();
+        return result;
+    }
+
+    public int deleteSong(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String condition = COLUMN_ID + "= ?";
+        String[] args = {String.valueOf(id)};
+        int result = db.delete(TABLE_SONG, condition, args);
+        db.close();
+        return result;
+    }
+
+
 }
