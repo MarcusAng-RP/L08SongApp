@@ -1,6 +1,10 @@
 package sg.edu.rp.c346.id22002222.songapp;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Song implements Serializable {
 
@@ -47,6 +51,10 @@ public class Song implements Serializable {
         this.year = year;
     }
 
+    public void setStars(int stars) {
+        this.stars = stars;
+    }
+
     public String toString() {
         String message = "";
         for(int i = 0 ; i < stars; i++){
@@ -56,5 +64,8 @@ public class Song implements Serializable {
         }
         return   title + "\n" + singers  + "-" + year + "\n" + message  ;
     }
+
+
+
 
 }

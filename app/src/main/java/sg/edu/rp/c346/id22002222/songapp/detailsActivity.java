@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class detailsActivity extends AppCompatActivity {
 
+
+    Button btnFilter;
     ArrayList<Song> al;
 
     ArrayAdapter<String> aa;
@@ -26,6 +29,7 @@ public class detailsActivity extends AppCompatActivity {
 
 
         lisv = findViewById(R.id.lisv);
+        btnFilter = findViewById(R.id.btnFilter);
 
 
         myDB db = new myDB(detailsActivity.this);
@@ -53,6 +57,27 @@ public class detailsActivity extends AppCompatActivity {
 
             }
         });
+
+        btnFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                myDB dbh = new myDB (detailsActivity.this);
+                al.clear();
+                al.addAll(dbh.getAllSongfive("*****"));
+                aa.notifyDataSetChanged();
+
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        myDB dbh = new myDB(this);
+        al.clear();
+        al.addAll(dbh.getSongs());
+        aa.notifyDataSetChanged();
 
     }
 }

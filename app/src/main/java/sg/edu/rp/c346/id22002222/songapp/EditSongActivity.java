@@ -15,6 +15,8 @@ public class EditSongActivity extends AppCompatActivity {
 
     EditText etTitle, etSinger,etYear;
 
+
+    RadioButton rg;
     RadioButton rb1,rb2,rb3,rb4,rb5;
 
     Button btnUpdate, btnDelete, btnCancel;
@@ -27,6 +29,7 @@ public class EditSongActivity extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitle);
         etSinger = findViewById(R.id.etSinger);
         etYear = findViewById(R.id.etYear);
+
         rb1 = findViewById(R.id.rb1);
         rb2 = findViewById(R.id.rb2);
         rb3 = findViewById(R.id.rb3);
@@ -43,11 +46,13 @@ public class EditSongActivity extends AppCompatActivity {
         etSinger.setText(song.getSingers());
 
         int year = song.getYear();
-//        etYear.setText(Integer.toString(year));
+        etYear.setText(Integer.toString(year));
         etYear.setText(Integer.toString(year));
 
-        Intent intentReceived = getIntent();
-        int stars = intentReceived.getIntExtra("stars", 1);
+//        Intent intentReceived = getIntent();
+//        int stars = intentReceived.getIntExtra("stars", 1);
+
+        int stars = song.getStars();
 
         if (stars == 1){
             rb1.setChecked(true);
@@ -73,14 +78,31 @@ public class EditSongActivity extends AppCompatActivity {
                 song.setTitle(etTitle.getText().toString());
                 song.setSingers(etSinger.getText().toString());
                 song.setYear(Integer.parseInt(etYear.getText().toString()));
+                if(rb1.isChecked()) {
+                    song.setStars(1);
+                }
+                else if(rb2.isChecked()){
+                    song.setStars(2);
+                }
+                else if(rb3.isChecked()){
+                    song.setStars(3);
+                }
+                else if(rb4.isChecked()){
+                    song.setStars(4);
+                }
+                else if(rb5.isChecked()){
+                    song.setStars(5);
+                }
 
 //                dbh.updateTitle(song);
 //                dbh.updateSinger(song);
                 dbh.updateSong(song);
                 dbh.close();
+
+                finish();
 //
-                Intent intent = new Intent(EditSongActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(EditSongActivity.this, MainActivity.class);
+//                startActivity(intent);
             }
         });
 
