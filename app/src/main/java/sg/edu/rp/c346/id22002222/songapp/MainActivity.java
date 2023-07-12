@@ -61,36 +61,24 @@ public class MainActivity extends AppCompatActivity {
 
                 if(rb1.isChecked()) {
                     stars = 1;
-                    Intent intent = new Intent(MainActivity.this,EditSongActivity.class);
-                    intent.putExtra("stars", 1);
-                    startActivity(intent);
+
                 }
                 else if(rb2.isChecked()){
                     stars = 2;
-                    Intent intent = new Intent(MainActivity.this,EditSongActivity.class);
-                    intent.putExtra("stars", 2);
-                    startActivity(intent);
+
 
                 }
 
                 else if(rb3.isChecked()){
                     stars = 3;
-                    Intent intent = new Intent(MainActivity.this,EditSongActivity.class);
-                    intent.putExtra("stars", 3);
-                    startActivity(intent);
 
                 }else if(rb4.isChecked()){
                     stars = 4;
-                    Intent intent = new Intent(MainActivity.this,EditSongActivity.class);
-                    intent.putExtra("stars", 4);
-                    startActivity(intent);
+
 //
                 }
                 else if(rb5.isChecked()){
                     stars = 5;
-                    Intent intent = new Intent(MainActivity.this,EditSongActivity.class);
-                    intent.putExtra("stars", 5);
-                    startActivity(intent);
 
 
                 }
