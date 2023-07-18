@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnInsert, btnShowList;
 
-    ArrayList<Song> al;
-    ArrayAdapter<String> aa;
+//    ArrayList<Song> al;
+//    ArrayAdapter<String> aa;
     ListView lv;
 
     int stars = 0;
@@ -108,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
 //
 //
 //                lv.setAdapter(aa);
+
+
 
 
             }

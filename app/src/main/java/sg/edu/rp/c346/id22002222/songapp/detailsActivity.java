@@ -18,7 +18,8 @@ public class detailsActivity extends AppCompatActivity {
     Button btnFilter;
     ArrayList<Song> al;
 
-    ArrayAdapter<String> aa;
+//    ArrayAdapter<String> aa;
+    CustomAdapter ca;
 
     ListView lisv;
 
@@ -33,14 +34,19 @@ public class detailsActivity extends AppCompatActivity {
 
 
         myDB db = new myDB(detailsActivity.this);
+
         al = db.getSongs();
-        for(int i =0; i< al.size();i++){
-            int stars = al.get(i).getStars();
-             al.get(i).starRating(stars);
-        }
-        aa = new ArrayAdapter(detailsActivity.this, android.R.layout.simple_list_item_1, al);
+//        for(int i =0; i< al.size();i++){
+//            int stars = al.get(i).getStars();
+//             al.get(i).starRating(stars);
+//        }
+//        aa = new ArrayAdapter(detailsActivity.this, android.R.layout.simple_list_item_1, al);
+        ca = new CustomAdapter(this , R.layout.row, al);
 //        aa.notifyDataSetChanged();
-        lisv.setAdapter(aa);
+        lisv.setAdapter(ca);
+        ca.notifyDataSetChanged();
+
+//        lisv.setAdapter(aa);
 
 
 
@@ -65,7 +71,8 @@ public class detailsActivity extends AppCompatActivity {
                 myDB dbh = new myDB (detailsActivity.this);
                 al.clear();
                 al.addAll(dbh.getAllSongfive("*****"));
-                aa.notifyDataSetChanged();
+                ca.notifyDataSetChanged();
+//                aa.notifyDataSetChanged();
 
             }
         });
@@ -77,7 +84,8 @@ public class detailsActivity extends AppCompatActivity {
         myDB dbh = new myDB(this);
         al.clear();
         al.addAll(dbh.getSongs());
-        aa.notifyDataSetChanged();
+        ca.notifyDataSetChanged();
+//        aa.notifyDataSetChanged();
 
     }
 }
