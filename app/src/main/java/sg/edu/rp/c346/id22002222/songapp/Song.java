@@ -59,7 +59,7 @@ public class Song implements Serializable {
         String message = "";
         for(int i = 0 ; i < stars; i++){
             message += "*";
-//            System.out.println("* ");
+
 
         }
         return   title + "\n" + singers  + "-" + year + "\n" + message  ;
